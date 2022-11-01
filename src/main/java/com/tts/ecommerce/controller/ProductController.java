@@ -24,7 +24,7 @@ public class ProductController {
 		return "product";
 
 	}
-//TODO:Either implement admin controls or reomve methods
+//TODO:Either implement admin controls or remove methods
 
 	@RequestMappingValue="/product",method=
 

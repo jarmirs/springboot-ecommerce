@@ -1,5 +1,6 @@
 package com.tts.ecommerce.model;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,6 +15,9 @@ import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "users")
@@ -30,7 +34,16 @@ public class User {
 	@Column(name = "first_name", length = 45, nullable = false)
 	private String lastName;
 	private String image;
+	@Transient
 	private boolean enabled;
+	@Transient
+	private boolean accountNonExpired =true;
+	@Transient
+	private boolean accountNonLocked=true;
+	@Transient
+	private boolean credentialsNonExpired=true;
+	@Transient
+	private Collection<GrantedAuthority> authorities =null;
 @ElementCollection
 @ManyToMany
 @JoinTable(
@@ -121,4 +134,6 @@ public void setRoles(Set<Role> roles) {
 public void addRole(Role role) {
 	this.roles.add(role);
 }
+
+
 }
