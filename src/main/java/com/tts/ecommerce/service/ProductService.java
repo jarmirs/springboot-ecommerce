@@ -29,5 +29,16 @@ public class ProductService {
 	public void save (Product product) {
 		productRepository.save(product);
 	}
-	
+	public void deleteById (long id) {
+		productRepository.deleteById(id);
+	}
+	public List <Product> findByBrandAndOrCategory (String brand, String category) {
+		if (category == null && brand ==null)
+			return productRepository.findAll();
+		else if (category == null)
+			return productRepository.findByBrand(brand);
+		else 
+			return productRepository.findByBrandAndCategory (brand, category);
+		
+	}
 }
