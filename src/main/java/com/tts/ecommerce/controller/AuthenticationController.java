@@ -16,7 +16,7 @@ import com.tts.ecommerce.service.UserService;
 
 @Controller
 
-public class AuthenticationController {
+public class AuthenticationController { 
 
 	@Autowired
 	private UserService userService;

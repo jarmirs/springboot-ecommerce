@@ -1,7 +1,9 @@
 package com.tts.ecommerce.model;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -31,7 +33,7 @@ public class User {
 	private String password;
 	@Column(name = "first_name", length = 45, nullable = false)
 	private String firstName;
-	@Column(name = "first_name", length = 45, nullable = false)
+	@Column(name = "last_name", length = 45, nullable = false)
 	private String lastName;
 	private String image;
 	@Transient
@@ -44,7 +46,7 @@ public class User {
 	private boolean credentialsNonExpired=true;
 	@Transient
 	private Collection<GrantedAuthority> authorities =null;
-@ElementCollection
+
 @ManyToMany
 @JoinTable(
 		name="user_roles",
@@ -133,6 +135,20 @@ public void setRoles(Set<Role> roles) {
 }
 public void addRole(Role role) {
 	this.roles.add(role);
+}
+
+@ElementCollection
+Map<Product, Integer> cart = new HashMap<>();
+
+public Map<Product, Integer> getCart() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+
+public void setCart(Map<Product, Integer> cart) {
+	// TODO Auto-generated method stub
+	
 }
 
 

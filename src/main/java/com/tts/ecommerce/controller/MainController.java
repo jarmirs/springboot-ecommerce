@@ -21,7 +21,7 @@ import lombok.Data;
 @ControllerAdvice
 public class MainController {
 	@Autowired
-	ProductService productServices;
+	ProductService productService;
 	
 @GetMapping("/")
 public String main(){
@@ -43,7 +43,7 @@ public List <String>brands () {
 public String filert(@RequestParam (required=false)String category,
 		@RequestParam (required=false)String brand, Model model) {
 	List<Product>filtered=
-			productServies.findByBrandAndOrCategory(brand,category);
+			productService.findByBrandAndOrCategory(brand,category);
 	model.addAttribute("products, filtered");
 	return "main";
 }

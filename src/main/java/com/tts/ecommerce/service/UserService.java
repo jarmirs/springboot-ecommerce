@@ -2,16 +2,21 @@ package com.tts.ecommerce.service;
 
 import java.util.Map;
 
-import org.apache.catalina.User;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.tts.ecommerce.model.Product;
+import com.tts.ecommerce.model.User;
 import com.tts.ecommerce.repsoitory.UserRepository;
+
+@Service
 
 public class UserService implements UserDetailsService{
 	@Autowired
@@ -43,7 +48,12 @@ public class UserService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = findByUsername (username);
 		if(user == null)throw new UsernameNotFoundException ("Username not found.");
-		return user;
+		return (UserDetails) user;
+	}
+
+	public void saveNew(org.apache.catalina.@Valid User user) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

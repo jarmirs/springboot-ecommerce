@@ -28,7 +28,7 @@ public class CartController {
 	
 	@ModelAttribute ("loggedInUser")
 	public User loggedInUser() {
-		return userService.getLoggedInUser();
+		return  userService.getLoggedInUser();
 	}
 	
 	@ModelAttribute("cart")
